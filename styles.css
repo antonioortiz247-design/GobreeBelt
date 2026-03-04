@@ -124,10 +124,9 @@ margin-bottom:40px;
 
 .product-grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
 }
-
 .card{
 background:#f4f6fa;
 padding:35px;
@@ -211,4 +210,92 @@ padding:14px 18px;
 border-radius:30px;
 text-decoration:none;
 font-weight:600;
+}
+
+/* RESPONSIVE */
+
+/* Tablets */
+
+@media (max-width: 1024px){
+
+.product-grid{
+grid-template-columns: repeat(2,1fr);
+}
+
+.sector-grid{
+grid-template-columns: repeat(2,1fr);
+}
+
+.about-grid{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+}
+
+
+/* Móviles */
+
+@media (max-width: 768px){
+
+.nav{
+flex-direction:column;
+gap:15px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.product-grid{
+grid-template-columns:1fr;
+}
+
+.sector-grid{
+grid-template-columns:1fr;
+}
+
+.hero{
+height:auto;
+padding:120px 0;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.phone-btn{
+display:none;
+}
+
+}
+
+
+/* Pantallas muy pequeñas */
+
+@media (max-width:480px){
+
+.hero h1{
+font-size:24px;
+}
+
+.cta{
+width:100%;
+text-align:center;
+}
+
+.secondary{
+width:100%;
+text-align:center;
+}
+
 }
