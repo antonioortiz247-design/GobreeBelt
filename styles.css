@@ -624,3 +624,84 @@ background-attachment:scroll;
 }
 
 }
+
+.hero-parallax{
+
+height:100vh;
+
+background-image:url("../img/hero.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+background-attachment:fixed;
+
+display:flex;
+
+align-items:center;
+
+color:white;
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.hero-mask-animated{
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+135deg,
+rgba(10,30,70,.9),
+rgba(10,30,70,.6)
+);
+
+display:flex;
+
+align-items:center;
+
+animation:maskMove 10s infinite alternate ease-in-out;
+
+}
+
+@keyframes maskMove{
+
+0%{
+
+clip-path:polygon(
+0 0,
+100% 0,
+100% 85%,
+0 100%
+);
+
+}
+
+50%{
+
+clip-path:polygon(
+0 0,
+100% 0,
+100% 75%,
+0 90%
+);
+
+}
+
+100%{
+
+clip-path:polygon(
+0 0,
+100% 0,
+100% 90%,
+0 100%
+);
+
+}
+
+}
