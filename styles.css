@@ -360,3 +360,60 @@ font-size:40px;
 color:white;
 cursor:pointer;
 }
+
+/* ABOUT INTERACTIVO */
+
+.about-pro{
+padding:100px 0;
+text-align:center;
+}
+
+.about-intro{
+max-width:700px;
+margin:auto;
+margin-bottom:50px;
+}
+
+.about-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-bottom:60px;
+}
+
+.about-card{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.about-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.icon{
+font-size:40px;
+margin-bottom:15px;
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+justify-content:center;
+gap:60px;
+flex-wrap:wrap;
+}
+
+.stat{
+text-align:center;
+}
+
+.counter{
+font-size:42px;
+font-weight:700;
+color:#3ca44a;
+}
