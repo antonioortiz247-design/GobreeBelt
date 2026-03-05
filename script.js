@@ -30,3 +30,33 @@ close.addEventListener("click", ()=>{
 lightbox.style.display = "none"
 
 })
+
+const track = document.querySelector(".carousel-track")
+const next = document.querySelector(".next")
+const prev = document.querySelector(".prev")
+
+let position = 0
+
+next.addEventListener("click",()=>{
+
+position -= 300
+
+if(position < -900){
+position = 0
+}
+
+track.style.transform = `translateX(${position}px)`
+
+})
+
+prev.addEventListener("click",()=>{
+
+position += 300
+
+if(position > 0){
+position = -900
+}
+
+track.style.transform = `translateX(${position}px)`
+
+})
