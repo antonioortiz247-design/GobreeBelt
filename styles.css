@@ -706,12 +706,6 @@ color:white;
 
 .contact-layout{
 
-display:grid;
-
-grid-template-columns:1fr;
-
-gap:60px;
-
 align-items:center;
 
 }
