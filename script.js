@@ -91,27 +91,3 @@ counter.innerText = target
 updateCounter()
 
 })
-
-const form = document.querySelector(".contact-form")
-const button = document.querySelector(".submit-btn")
-const text = document.querySelector(".btn-text")
-const loader = document.querySelector(".loader")
-const message = document.querySelector(".form-message")
-
-form.addEventListener("submit", function(){
-
-text.innerText = "Enviando..."
-
-loader.style.display = "block"
-
-setTimeout(()=>{
-
-loader.style.display = "none"
-
-text.innerText = "Enviado ✓"
-
-message.innerText = "Tu mensaje fue enviado correctamente."
-
-},2000)
-
-})
