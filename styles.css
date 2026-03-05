@@ -105,7 +105,7 @@ gap:50px;
 }
 
 .about-image{
-background:url('../img/about.jpg') center/cover;
+background:url('../portada.jpg') center/cover;
 height:300px;
 border-radius:10px;
 }
@@ -523,7 +523,7 @@ width:280px;
 
 height:100vh;
 
-background-image:url("../img/hero.jpg");
+background-image:url("../portada.jpg");
 
 background-size:cover;
 
@@ -629,7 +629,7 @@ background-attachment:scroll;
 
 height:100vh;
 
-background-image:url("../img/hero.jpg");
+background-image:url("../portada.jpg");
 
 background-size:cover;
 
