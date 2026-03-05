@@ -629,7 +629,7 @@ background-attachment:scroll;
 
 height:100vh;
 
-background-image:url("portada.png");
+background-image:url("../portada.png");
 
 background-size:cover;
 
