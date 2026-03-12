@@ -42,6 +42,22 @@ if (lightbox && lightboxImg && closeButton) {
   });
 }
 
+const galleryTrack = document.getElementById('gallery-track');
+const prevButton = document.querySelector('.gallery-prev');
+const nextButton = document.querySelector('.gallery-next');
+
+if (galleryTrack && prevButton && nextButton) {
+  const scrollGallery = (direction) => {
+    const firstCard = galleryTrack.querySelector('.gallery-card');
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
+    const gap = 18;
+    galleryTrack.scrollBy({ left: (cardWidth + gap) * direction, behavior: 'smooth' });
+  };
+
+  prevButton.addEventListener('click', () => scrollGallery(-1));
+  nextButton.addEventListener('click', () => scrollGallery(1));
+}
+
 const counters = document.querySelectorAll('.counter');
 
 const animateCounter = (counter) => {
