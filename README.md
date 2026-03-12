@@ -1,20 +1,19 @@
+# Gobree Belt - Sitio web
 
-Gobree Belt - Sitio Web Profesional
+Landing page corporativa para Gobree Belt con navegación por secciones (estilo sitio web), galería con lightbox y formulario de contacto.
 
-Contenido:
+## Archivos principales
 
-index.html
-assets/css/styles.css
-assets/js/script.js
-assets/img/logo.png
-assets/img/hero.jpg
-assets/img/about.jpg
+- `index.html`: estructura principal del sitio.
+- `styles.css`: estilos responsivos.
+- `script.js`: navegación suave, contadores, lightbox y validación del formulario.
 
-Instrucciones:
+## Ejecutar localmente
 
-1. Reemplazar imágenes dentro de assets/img
-2. Subir todos los archivos a un repositorio en GitHub
-3. Activar GitHub Pages en Settings → Pages
-4. Seleccionar branch main
+Abre `index.html` en tu navegador o usa un servidor estático:
 
-El sitio quedará online automáticamente.
+```bash
+python3 -m http.server 8000
+```
+
+Luego visita `http://localhost:8000`.

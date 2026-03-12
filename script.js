@@ -1,13 +1,11 @@
-const navLinks = document.querySelectorAll('nav a');
+const navLinks = document.querySelectorAll('nav a, .page-link-card');
 
 navLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     const targetSelector = link.getAttribute('href');
     const target = document.querySelector(targetSelector);
 
-    if (!target) {
-      return;
-    }
+    if (!target) return;
 
     e.preventDefault();
     target.scrollIntoView({ behavior: 'smooth' });
@@ -36,15 +34,11 @@ if (lightbox && lightboxImg && closeButton) {
 
   closeButton.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
+    if (e.target === lightbox) closeLightbox();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeLightbox();
-    }
+    if (e.key === 'Escape') closeLightbox();
   });
 }
 
@@ -61,6 +55,7 @@ const animateCounter = (counter) => {
       counter.textContent = String(target);
       return;
     }
+
     counter.textContent = String(current);
     requestAnimationFrame(updateCounter);
   };
@@ -81,14 +76,11 @@ if (counters.length > 0) {
     { threshold: 0.45 }
   );
 
-  counters.forEach((counter) => {
-    observer.observe(counter);
-  });
+  counters.forEach((counter) => observer.observe(counter));
 }
 
-
-const contactForm = document.getElementById('contact-form') || document.getElementById('footer-contact-form');
-const contactFormStatus = document.getElementById('contact-form-status') || document.getElementById('footer-form-status');
+const contactForm = document.getElementById('contact-form');
+const contactFormStatus = document.getElementById('contact-form-status');
 
 if (contactForm && contactFormStatus) {
   contactForm.addEventListener('submit', (e) => {
@@ -101,44 +93,5 @@ if (contactForm && contactFormStatus) {
 
     contactFormStatus.textContent = '¡Gracias! Te contactaremos pronto.';
     contactForm.reset();
-  });
-}
-}
-
-const counters = document.querySelectorAll('.counter');
-
-const animateCounter = (counter) => {
-  const target = Number(counter.dataset.target || 0);
-  let current = 0;
-  const step = Math.max(1, Math.ceil(target / 80));
-
-  const updateCounter = () => {
-    current += step;
-    if (current >= target) {
-      counter.textContent = String(target);
-      return;
-    }
-    counter.textContent = String(current);
-    requestAnimationFrame(updateCounter);
-  };
-
-  requestAnimationFrame(updateCounter);
-};
-
-if (counters.length > 0) {
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.45 }
-  );
-
-  counters.forEach((counter) => {
-    observer.observe(counter);
   });
 }
