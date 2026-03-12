@@ -48,6 +48,22 @@ if (lightbox && lightboxImg && closeButton) {
   });
 }
 
+const galleryTrack = document.getElementById('gallery-track');
+const prevButton = document.querySelector('.gallery-prev');
+const nextButton = document.querySelector('.gallery-next');
+
+if (galleryTrack && prevButton && nextButton) {
+  const scrollGallery = (direction) => {
+    const firstCard = galleryTrack.querySelector('.gallery-card');
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
+    const gap = 18;
+    galleryTrack.scrollBy({ left: (cardWidth + gap) * direction, behavior: 'smooth' });
+  };
+
+  prevButton.addEventListener('click', () => scrollGallery(-1));
+  nextButton.addEventListener('click', () => scrollGallery(1));
+}
+
 const counters = document.querySelectorAll('.counter');
 
 const animateCounter = (counter) => {
@@ -86,9 +102,8 @@ if (counters.length > 0) {
   });
 }
 
-
-const contactForm = document.getElementById('contact-form') || document.getElementById('footer-contact-form');
-const contactFormStatus = document.getElementById('contact-form-status') || document.getElementById('footer-form-status');
+const contactForm = document.getElementById('contact-form');
+const contactFormStatus = document.getElementById('contact-form-status');
 
 if (contactForm && contactFormStatus) {
   contactForm.addEventListener('submit', (e) => {
@@ -101,44 +116,5 @@ if (contactForm && contactFormStatus) {
 
     contactFormStatus.textContent = '¡Gracias! Te contactaremos pronto.';
     contactForm.reset();
-  });
-}
-}
-
-const counters = document.querySelectorAll('.counter');
-
-const animateCounter = (counter) => {
-  const target = Number(counter.dataset.target || 0);
-  let current = 0;
-  const step = Math.max(1, Math.ceil(target / 80));
-
-  const updateCounter = () => {
-    current += step;
-    if (current >= target) {
-      counter.textContent = String(target);
-      return;
-    }
-    counter.textContent = String(current);
-    requestAnimationFrame(updateCounter);
-  };
-
-  requestAnimationFrame(updateCounter);
-};
-
-if (counters.length > 0) {
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.45 }
-  );
-
-  counters.forEach((counter) => {
-    observer.observe(counter);
   });
 }
