@@ -103,3 +103,42 @@ if (contactForm && contactFormStatus) {
     contactForm.reset();
   });
 }
+}
+
+const counters = document.querySelectorAll('.counter');
+
+const animateCounter = (counter) => {
+  const target = Number(counter.dataset.target || 0);
+  let current = 0;
+  const step = Math.max(1, Math.ceil(target / 80));
+
+  const updateCounter = () => {
+    current += step;
+    if (current >= target) {
+      counter.textContent = String(target);
+      return;
+    }
+    counter.textContent = String(current);
+    requestAnimationFrame(updateCounter);
+  };
+
+  requestAnimationFrame(updateCounter);
+};
+
+if (counters.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.45 }
+  );
+
+  counters.forEach((counter) => {
+    observer.observe(counter);
+  });
+}
