@@ -1,93 +1,105 @@
+const navLinks = document.querySelectorAll('nav a');
 
-document.querySelectorAll("nav a").forEach(link=>{
-link.addEventListener("click",function(e){
+navLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const targetSelector = link.getAttribute('href');
+    const target = document.querySelector(targetSelector);
 
-e.preventDefault()
+    if (!target) {
+      return;
+    }
 
-document.querySelector(this.getAttribute("href"))
-.scrollIntoView({behavior:"smooth"})
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-})
-})
-const images = document.querySelectorAll(".gallery-img")
-const lightbox = document.getElementById("lightbox")
-const lightboxImg = document.getElementById("lightbox-img")
-const close = document.querySelector(".close")
+const images = document.querySelectorAll('.gallery-img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeButton = document.querySelector('.close');
 
-images.forEach(img => {
+if (lightbox && lightboxImg && closeButton) {
+  images.forEach((img) => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.setAttribute('aria-hidden', 'false');
+    });
+  });
 
-img.addEventListener("click", ()=>{
+  const closeLightbox = () => {
+    lightbox.style.display = 'none';
+    lightbox.setAttribute('aria-hidden', 'true');
+  };
 
-lightbox.style.display = "flex"
-lightboxImg.src = img.src
+  closeButton.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
 
-})
-
-})
-
-close.addEventListener("click", ()=>{
-
-lightbox.style.display = "none"
-
-})
-
-const track = document.querySelector(".carousel-track")
-const next = document.querySelector(".next")
-const prev = document.querySelector(".prev")
-
-let position = 0
-
-next.addEventListener("click",()=>{
-
-position -= 300
-
-if(position < -900){
-position = 0
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
 }
 
-track.style.transform = `translateX(${position}px)`
+const counters = document.querySelectorAll('.counter');
 
-})
+const animateCounter = (counter) => {
+  const target = Number(counter.dataset.target || 0);
+  let current = 0;
+  const step = Math.max(1, Math.ceil(target / 80));
 
-prev.addEventListener("click",()=>{
+  const updateCounter = () => {
+    current += step;
+    if (current >= target) {
+      counter.textContent = String(target);
+      return;
+    }
+    counter.textContent = String(current);
+    requestAnimationFrame(updateCounter);
+  };
 
-position += 300
+  requestAnimationFrame(updateCounter);
+};
 
-if(position > 0){
-position = -900
+if (counters.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.45 }
+  );
+
+  counters.forEach((counter) => {
+    observer.observe(counter);
+  });
 }
 
-track.style.transform = `translateX(${position}px)`
 
-})
+const contactForm = document.getElementById('contact-form');
+const contactFormStatus = document.getElementById('contact-form-status');
 
-const counters = document.querySelectorAll(".counter")
+if (contactForm && contactFormStatus) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-counters.forEach(counter => {
+    if (!contactForm.checkValidity()) {
+      contactFormStatus.textContent = 'Por favor completa todos los campos.';
+      return;
+    }
 
-counter.innerText = "0"
-
-const updateCounter = () => {
-
-const target = +counter.getAttribute("data-target")
-const current = +counter.innerText
-
-const increment = target / 100
-
-if(current < target){
-
-counter.innerText = Math.ceil(current + increment)
-
-setTimeout(updateCounter,20)
-
-}else{
-
-counter.innerText = target
-
+    contactFormStatus.textContent = '¡Gracias! Te contactaremos pronto.';
+    contactForm.reset();
+  });
 }
-
-}
-
-updateCounter()
-
-})
