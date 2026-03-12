@@ -124,13 +124,46 @@
 
 <section class="gallery-pro">
   <div class="container">
-    <h2>Galería de proyectos</h2>
+    <div class="gallery-header">
+      <h2>Galería de proyectos</h2>
+      <p>Una experiencia más inmersiva tipo showcase: desliza para explorar instalaciones recientes.</p>
+    </div>
 
-    <div class="gallery-grid">
-      <img src="Galeria1.jpg" class="gallery-img" alt="Proyecto de banda transportadora 1" loading="lazy">
-      <img src="Galeria2.jpg" class="gallery-img" alt="Proyecto de banda transportadora 2" loading="lazy">
-      <img src="Galeria3.jpg" class="gallery-img" alt="Proyecto de banda transportadora 3" loading="lazy">
-      <img src="Galeria4.jpg" class="gallery-img" alt="Proyecto de banda transportadora 4" loading="lazy">
+    <div class="gallery-shell" aria-label="Carrusel de proyectos">
+      <button class="gallery-control gallery-prev" type="button" aria-label="Proyecto anterior">‹</button>
+
+      <div class="gallery-track" id="gallery-track">
+        <article class="gallery-card">
+          <img src="Galeria1.jpg" class="gallery-img" alt="Proyecto de banda transportadora 1" loading="lazy">
+          <div class="gallery-caption">Línea de alimentos con acabado sanitario</div>
+        </article>
+        <article class="gallery-card">
+          <img src="Galeria2.jpg" class="gallery-img" alt="Proyecto de banda transportadora 2" loading="lazy">
+          <div class="gallery-caption">Sistema modular de alto rendimiento</div>
+        </article>
+        <article class="gallery-card">
+          <img src="Galeria3.jpg" class="gallery-img" alt="Proyecto de banda transportadora 3" loading="lazy">
+          <div class="gallery-caption">Integración para logística y distribución</div>
+        </article>
+        <article class="gallery-card">
+          <img src="Galeria4.jpg" class="gallery-img" alt="Proyecto de banda transportadora 4" loading="lazy">
+          <div class="gallery-caption">Banda para operación continua</div>
+        </article>
+        <article class="gallery-card">
+          <img src="Galeria5.jpg" class="gallery-img" alt="Proyecto de banda transportadora 5" loading="lazy">
+          <div class="gallery-caption">Montaje para manejo de materiales</div>
+        </article>
+        <article class="gallery-card">
+          <img src="Galeria6.jpg" class="gallery-img" alt="Proyecto de banda transportadora 6" loading="lazy">
+          <div class="gallery-caption">Aplicación industrial especializada</div>
+        </article>
+        <article class="gallery-card">
+          <img src="Galeria7.jpg" class="gallery-img" alt="Proyecto de banda transportadora 7" loading="lazy">
+          <div class="gallery-caption">Proyecto final con ajuste a medida</div>
+        </article>
+      </div>
+
+      <button class="gallery-control gallery-next" type="button" aria-label="Siguiente proyecto">›</button>
     </div>
   </div>
 </section>
