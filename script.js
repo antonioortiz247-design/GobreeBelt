@@ -1,13 +1,11 @@
-const navLinks = document.querySelectorAll('nav a');
+const navLinks = document.querySelectorAll('nav a, .page-link-card');
 
 navLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     const targetSelector = link.getAttribute('href');
     const target = document.querySelector(targetSelector);
 
-    if (!target) {
-      return;
-    }
+    if (!target) return;
 
     e.preventDefault();
     target.scrollIntoView({ behavior: 'smooth' });
@@ -36,15 +34,11 @@ if (lightbox && lightboxImg && closeButton) {
 
   closeButton.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
+    if (e.target === lightbox) closeLightbox();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeLightbox();
-    }
+    if (e.key === 'Escape') closeLightbox();
   });
 }
 
@@ -77,6 +71,7 @@ const animateCounter = (counter) => {
       counter.textContent = String(target);
       return;
     }
+
     counter.textContent = String(current);
     requestAnimationFrame(updateCounter);
   };
@@ -97,9 +92,7 @@ if (counters.length > 0) {
     { threshold: 0.45 }
   );
 
-  counters.forEach((counter) => {
-    observer.observe(counter);
-  });
+  counters.forEach((counter) => observer.observe(counter));
 }
 
 const contactForm = document.getElementById('contact-form');
