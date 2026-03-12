@@ -87,8 +87,8 @@ if (counters.length > 0) {
 }
 
 
-const contactForm = document.getElementById('contact-form');
-const contactFormStatus = document.getElementById('contact-form-status');
+const contactForm = document.getElementById('contact-form') || document.getElementById('footer-contact-form');
+const contactFormStatus = document.getElementById('contact-form-status') || document.getElementById('footer-form-status');
 
 if (contactForm && contactFormStatus) {
   contactForm.addEventListener('submit', (e) => {

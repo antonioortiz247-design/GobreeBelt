@@ -337,14 +337,17 @@ section h2 {
   padding: 18px;
 }
 
-.contact-form {
+.contact-form,
+.footer-contact-form {
   margin-top: 10px;
   display: grid;
   gap: 10px;
 }
 
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.footer-contact-form input,
+.footer-contact-form textarea {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.08);
@@ -355,23 +358,29 @@ section h2 {
 }
 
 .contact-form input::placeholder,
-.contact-form textarea::placeholder {
+.contact-form textarea::placeholder,
+.footer-contact-form input::placeholder,
+.footer-contact-form textarea::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
 .contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form textarea:focus,
+.footer-contact-form input:focus,
+.footer-contact-form textarea:focus {
   outline: 2px solid rgba(60, 164, 74, 0.7);
   border-color: transparent;
 }
 
-.contact-submit {
+.contact-submit,
+.footer-submit {
   border: none;
   cursor: pointer;
   justify-self: start;
 }
 
-.contact-form-status {
+.contact-form-status,
+.footer-form-status {
   min-height: 20px;
   font-size: 0.9rem;
   color: #b8f5c1;
