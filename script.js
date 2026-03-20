@@ -99,15 +99,33 @@ const contactForm = document.getElementById('contact-form');
 const contactFormStatus = document.getElementById('contact-form-status');
 
 if (contactForm && contactFormStatus) {
+  const submitButton = contactForm.querySelector('.contact-submit');
+
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    contactFormStatus.classList.remove('is-error', 'is-success');
+
     if (!contactForm.checkValidity()) {
       contactFormStatus.textContent = 'Por favor completa todos los campos.';
+      contactFormStatus.classList.add('is-error');
       return;
     }
 
-    contactFormStatus.textContent = '¡Gracias! Te contactaremos pronto.';
-    contactForm.reset();
+    if (submitButton) {
+      submitButton.classList.add('is-loading');
+      submitButton.textContent = 'Enviando...';
+    }
+
+    window.setTimeout(() => {
+      contactFormStatus.textContent = '¡Gracias! Te contactaremos pronto.';
+      contactFormStatus.classList.add('is-success');
+      contactForm.reset();
+
+      if (submitButton) {
+        submitButton.classList.remove('is-loading');
+        submitButton.textContent = 'Enviar solicitud';
+      }
+    }, 450);
   });
 }
